@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,10 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://designdoststudio.github.io/">
 <title>Design Dost - Free Online Poster Maker in Urdu & English</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Sans:wght@400;700;800&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root{--purple:#563bd1;--dark:#21164c;--light:#f5f3ff;--border:#e5e1f5}
@@ -53,6 +58,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
 footer{text-align:center;padding:25px 12px;background:#21164c;color:white;margin-top:25px}
 footer a{color:white;margin:5px}
 .notice{background:#f1edff;border-left:4px solid var(--purple);padding:12px;border-radius:6px;font-size:13px;line-height:1.6}
+.font-note{background:#f7f4ff;border-radius:8px;padding:10px;font-size:12px;color:#625d70;line-height:1.6;margin-top:10px}
 @media(min-width:700px){
  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .template-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -150,6 +156,42 @@ footer a{color:white;margin:5px}
 <div class="template-grid" id="templateButtons"></div>
 </div>
 
+<div class="panel" style="background:#faf9ff;margin-top:18px">
+<h3>🔤 Font Customization</h3>
+<p class="small">Choose separate font styles for your main heading and description.</p>
+
+<div class="grid">
+<div>
+<label for="headingFont">Heading Font Style</label>
+<select id="headingFont">
+<option value="Arial">Arial - Clean</option>
+<option value="Georgia">Georgia - Elegant Serif</option>
+<option value="Trebuchet MS">Trebuchet - Modern</option>
+<option value="Impact">Impact - Extra Bold</option>
+<option value="Noto Sans">Noto Sans - Professional</option>
+<option value="Noto Serif">Noto Serif - Classic</option>
+<option value="Noto Nastaliq Urdu">Noto Nastaliq Urdu</option>
+</select>
+</div>
+
+<div>
+<label for="subheadingFont">Subheading Font Style</label>
+<select id="subheadingFont">
+<option value="Arial">Arial - Clean</option>
+<option value="Georgia">Georgia - Elegant Serif</option>
+<option value="Trebuchet MS">Trebuchet - Modern</option>
+<option value="Impact">Impact - Extra Bold</option>
+<option value="Noto Sans">Noto Sans - Professional</option>
+<option value="Noto Serif">Noto Serif - Classic</option>
+<option value="Noto Nastaliq Urdu" selected>Noto Nastaliq Urdu</option>
+</select>
+</div>
+</div>
+<div class="font-note">
+Tip: For Urdu posters, try Noto Nastaliq Urdu. For English posters, try Arial, Georgia or Noto Sans. Some fonts may look different if your device or browser cannot load them.
+</div>
+</div>
+
 <div class="grid">
 <div class="full">
 <label for="heading">Main Heading</label>
@@ -217,6 +259,7 @@ Your uploaded photos and logos are processed in your browser for poster creation
 <li>Choose a poster size for social media or printing.</li>
 <li>Select one of the available design templates.</li>
 <li>Enter your heading, business name, offer and contact details.</li>
+<li>Choose separate font styles for your heading and subheading.</li>
 <li>Choose your preferred colours and optionally upload a photo or logo.</li>
 <li>Tap Update Poster Preview and then Download PNG Poster.</li>
 </ol>
@@ -252,6 +295,8 @@ Your uploaded photos and logos are processed in your browser for poster creation
 <p>Yes. You can use the poster maker without creating an account or paying a design fee.</p>
 <h4>Can I create Urdu posters?</h4>
 <p>Yes. Select Urdu from the language option and enter your Urdu text.</p>
+<h4>Can I change font styles?</h4>
+<p>Yes. You can select separate font styles for your main heading and subheading. Available fonts include English and Urdu-friendly styles.</p>
 <h4>Can I add my own logo or photo?</h4>
 <p>Yes. You can optionally select a photo and a logo from your device.</p>
 <h4>How can I save my poster?</h4>
@@ -301,12 +346,25 @@ elegant:{name:"Elegant Design",cat:"fashion",style:"elegant",bg:"#eee8e1",fg:"#3
 creative:{name:"Creative Layout",cat:"business",style:"creative",bg:"#142e42",fg:"#ffffff",accent:"#36d6c0"}
 };
 
-let photoData = null;
-let logoData = null;
 let photoImage = null;
 let logoImage = null;
 
 function currentTemplate(){return templates[$("template").value] || templates.sale;}
+
+function fontFamily(id){
+ const value=$(id).value;
+ const allowed=["Arial","Georgia","Trebuchet MS","Impact","Noto Sans","Noto Serif","Noto Nastaliq Urdu"];
+ return allowed.includes(value) ? `"${value}"` : "Arial";
+}
+
+function fontReady(){
+ if(!document.fonts)return Promise.resolve();
+ return Promise.all([
+  document.fonts.load('700 40px "Noto Nastaliq Urdu"'),
+  document.fonts.load('700 40px "Noto Sans"'),
+  document.fonts.load('700 40px "Noto Serif"')
+ ]).catch(()=>{});
+}
 
 function setTemplateButtons(){
  const holder=$("templateButtons");
@@ -393,45 +451,52 @@ function rounded(x,y,w,h,r,color){
  ctx.roundRect(x,y,w,h,r);
  ctx.fill();
 }
-function fitText(text,maxWidth,fontSize,minSize=25){
+
+function fitText(text,maxWidth,fontSize,minSize=25,family="Arial"){
  let size=fontSize;
  while(size>minSize){
-  ctx.font=`bold ${size}px Arial, sans-serif`;
+  ctx.font=`bold ${size}px "${family}"`;
   if(ctx.measureText(text).width<=maxWidth)break;
   size-=2;
  }
  return size;
 }
-function wrapText(text,x,y,maxWidth,lineHeight,maxLines,fontSize,color,align="center"){
+
+function wrapText(text,x,y,maxWidth,lineHeight,maxLines,fontSize,color,align="center",family="Arial"){
  ctx.fillStyle=color;
  ctx.textAlign=align;
  ctx.textBaseline="middle";
  ctx.direction=$("language").value==="ur"?"rtl":"ltr";
  const words=String(text||"").split(/\s+/);
  let lines=[],line="";
+ ctx.font=`bold ${fontSize}px "${family}"`;
+
  for(const word of words){
   const test=line?line+" "+word:word;
-  ctx.font=`bold ${fontSize}px Arial, sans-serif`;
   if(ctx.measureText(test).width>maxWidth && line){
    lines.push(line);line=word;
   }else line=test;
  }
  if(line)lines.push(line);
+
  if(lines.length>maxLines){
   lines=lines.slice(0,maxLines);
   let last=lines[maxLines-1];
   while(last.length>2 && ctx.measureText(last+"…").width>maxWidth)last=last.slice(0,-1);
   lines[maxLines-1]=last+"…";
  }
+
  lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight,maxWidth));
  return lines.length;
 }
+
 function drawImageContain(img,x,y,w,h){
  if(!img)return;
  const scale=Math.min(w/img.width,h/img.height);
  const dw=img.width*scale,dh=img.height*scale;
  ctx.drawImage(img,x+(w-dw)/2,y+(h-dh)/2,dw,dh);
 }
+
 function drawImageCover(img,x,y,w,h){
  if(!img)return;
  const scale=Math.max(w/img.width,h/img.height);
@@ -442,8 +507,10 @@ function drawImageCover(img,x,y,w,h){
  ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
  ctx.restore();
 }
+
 function drawPoster(){
  setCanvasSize();
+
  const w=canvas.width,h=canvas.height;
  const t=currentTemplate();
  const bg=$("bgColor").value||t.bg;
@@ -455,14 +522,15 @@ function drawPoster(){
  const offer=$("offer").value.trim()||"SPECIAL OFFER";
  const phone=$("phone").value.trim();
  const small=Math.min(w,h);
- const top=h*.12;
  const center=w/2;
  const isUr=$("language").value==="ur";
+
+ const headingFamily=fontFamily("headingFont");
+ const subheadingFamily=fontFamily("subheadingFont");
 
  ctx.clearRect(0,0,w,h);
  ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
 
- // Individual template backgrounds and layout decorations
  switch(t.style){
  case "sale":
   ctx.fillStyle=accent;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(w*.35,0);ctx.lineTo(0,h*.28);ctx.fill();
@@ -525,7 +593,6 @@ function drawPoster(){
   ctx.fillStyle="#234b5b";ctx.fillRect(0,h*.82,w,h*.18);break;
  }
 
- const story=$("size").value==="story";
  const landscape=$("size").value==="landscape";
  const imageY=landscape?h*.18:h*.32;
  const imageH=landscape?h*.45:h*.25;
@@ -537,39 +604,67 @@ function drawPoster(){
  ctx.font=`bold ${Math.round(small*.038)}px Arial`;
  ctx.fillText(brand.toUpperCase(),center,h*.075,w*.82);
 
- // Optional image
+ // Optional photo
  if(photoImage){
   if(landscape)drawImageCover(photoImage,w*.59,imageY,w*.32,imageH);
   else drawImageCover(photoImage,w*.18,imageY,w*.64,imageH);
- }else{
-  if(!landscape){
-   ctx.fillStyle=accent;ctx.globalAlpha=.2;
-   ctx.beginPath();ctx.arc(center,imageY+imageH/2,small*.12,0,Math.PI*2);ctx.fill();
-   ctx.globalAlpha=1;
-  }
+ }else if(!landscape){
+  ctx.fillStyle=accent;ctx.globalAlpha=.2;
+  ctx.beginPath();ctx.arc(center,imageY+imageH/2,small*.12,0,Math.PI*2);ctx.fill();
+  ctx.globalAlpha=1;
  }
 
- // Heading
+ // Main Heading - selected font
  const headingY=landscape?h*.25:(photoImage?h*.2:h*.29);
  const headingMax=landscape?w*.52:w*.84;
- const headingSize=fitText(heading,headingMax,Math.round(small*.09),28);
- ctx.font=`bold ${headingSize}px Arial`;
- ctx.fillStyle=fg;ctx.textAlign="center";ctx.direction=isUr?"rtl":"ltr";
- wrapText(heading,landscape?w*.3:center,headingY,headingMax,headingSize*1.2,3,headingSize,fg);
+ const headingSize=fitText(heading,headingMax,Math.round(small*.09),28,headingFamily);
 
- // Description
+ ctx.font=`bold ${headingSize}px ${headingFamily}`;
+ ctx.fillStyle=fg;
+ ctx.textAlign="center";
+ ctx.direction=isUr?"rtl":"ltr";
+
+ wrapText(
+  heading,
+  landscape?w*.3:center,
+  headingY,
+  headingMax,
+  headingSize*1.2,
+  3,
+  headingSize,
+  fg,
+  "center",
+  headingFamily
+ );
+
+ // Subheading - separate selected font
  const descY=landscape?h*.48:textStart;
  const descWidth=landscape?w*.5:w*.8;
- wrapText(sub,landscape?w*.3:center,descY,descWidth,Math.round(small*.045),4,Math.round(small*.038),fg);
+ const descSize=Math.round(small*.038);
+
+ wrapText(
+  sub,
+  landscape?w*.3:center,
+  descY,
+  descWidth,
+  Math.round(descSize*(subheadingFamily.includes("Nastaliq")?1.9:1.4)),
+  4,
+  descSize,
+  fg,
+  "center",
+  subheadingFamily
+ );
 
  // Offer block
  const offerY=landscape?h*.73:h*.78;
  const offerW=landscape?w*.48:w*.72;
  const offerH=landscape?h*.16:h*.12;
  rounded(landscape?w*.06:center-offerW/2,offerY-offerH/2,offerW,offerH,25,accent);
- ctx.fillStyle= t.style==="minimal"||t.style==="menu"||t.style==="classic"||t.style==="elegant" ? "#ffffff" : (fg=== "#ffffff" ? "#21164c" : "#ffffff");
+
+ ctx.fillStyle=t.style==="minimal"||t.style==="menu"||t.style==="classic"||t.style==="elegant"?"#ffffff":(fg==="#ffffff"?"#21164c":"#ffffff");
  ctx.font=`bold ${fitText(offer,offerW*.88,Math.round(small*.07),24)}px Arial`;
- ctx.textAlign="center";ctx.direction=isUr?"rtl":"ltr";
+ ctx.textAlign="center";
+ ctx.direction=isUr?"rtl":"ltr";
  ctx.fillText(offer,landscape?w*.3:center,offerY,offerW*.88);
 
  // Contact footer
@@ -582,17 +677,26 @@ function drawPoster(){
  if(logoImage)drawImageContain(logoImage,w*.04,h*.025,w*.13,w*.13);
 }
 
-["heading","subheading","brand","offer","phone","bgColor","textColor"].forEach(id=>{
+// Text and design controls
+[
+ "heading","subheading","brand","offer","phone",
+ "bgColor","textColor","headingFont","subheadingFont"
+].forEach(id=>{
  $(id).addEventListener("input",drawPoster);
+ $(id).addEventListener("change",drawPoster);
 });
+
 $("language").addEventListener("change",drawPoster);
 $("size").addEventListener("change",drawPoster);
+
 $("template").addEventListener("change",()=>{
  const t=currentTemplate();
  $("bgColor").value=t.bg;
  $("textColor").value=t.fg;
- setTemplateButtons();drawPoster();
+ setTemplateButtons();
+ drawPoster();
 });
+
 $("category").addEventListener("change",filterTemplates);
 $("previewBtn").addEventListener("click",drawPoster);
 
@@ -608,31 +712,43 @@ $("resetBtn").addEventListener("click",()=>{
  $("template").value="sale";
  $("bgColor").value="#563bd1";
  $("textColor").value="#ffffff";
+ $("headingFont").value="Arial";
+ $("subheadingFont").value="Noto Nastaliq Urdu";
  $("photo").value="";
  $("logo").value="";
- photoImage=null;logoImage=null;
- setTemplateButtons();filterTemplates();drawPoster();
+ photoImage=null;
+ logoImage=null;
+ setTemplateButtons();
+ filterTemplates();
+ drawPoster();
 });
 
+// PNG Download
 $("downloadBtn").addEventListener("click",()=>{
  try{
-  drawPoster();
-  canvas.toBlob(blob=>{
-   if(!blob){alert("Poster could not be created. Please try again.");return;}
-   const url=URL.createObjectURL(blob);
-   const a=document.createElement("a");
-   a.href=url;
-   a.download="design-dost-poster.png";
-   document.body.appendChild(a);
-   a.click();
-   a.remove();
-   setTimeout(()=>URL.revokeObjectURL(url),2000);
-  },"image/png");
+  fontReady().then(()=>{
+   drawPoster();
+   canvas.toBlob(blob=>{
+    if(!blob){
+     alert("Poster could not be created. Please try again.");
+     return;
+    }
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url;
+    a.download="design-dost-poster.png";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),2000);
+   },"image/png");
+  });
  }catch(e){
   alert("Download failed. Please try another browser or a smaller image.");
  }
 });
 
+// Older browser support for rounded rectangles
 if(!CanvasRenderingContext2D.prototype.roundRect){
  CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
   this.beginPath();
@@ -648,8 +764,9 @@ if(!CanvasRenderingContext2D.prototype.roundRect){
  };
 }
 
+// Initial setup
 setTemplateButtons();
-drawPoster();
+fontReady().then(drawPoster);
 </script>
 </body>
 </html>
