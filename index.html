@@ -4,8 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Design Dost - Free Online Poster Maker in Urdu & English</title>
-<meta name="description" content="Design Dost is a free online poster maker. Create beautiful Urdu and English posters for businesses, shops, pharmacies, social media and events. Customize templates and download your poster in PNG format.">
+
+<meta name="description" content="Create free Urdu and English posters online with Design Dost. Customize business, pharmacy, restaurant, fashion and event templates on mobile. Download your poster as PNG.">
+
 <meta name="robots" content="index, follow">
 <meta name="google-adsense-account" content="ca-pub-9432807820750105">
 <link rel="canonical" href="https://designdoststudio.github.io/">
@@ -14,18 +17,21 @@
 <style>
 *{box-sizing:border-box}
 
+html{scroll-behavior:smooth}
+
 body{
 margin:0;
 font-family:Arial,Tahoma,sans-serif;
 background:#f3f5fc;
 color:#20243a;
+line-height:1.6;
 }
 
 header{
 background:linear-gradient(120deg,#263fbd,#853ce0);
 color:#fff;
 text-align:center;
-padding:25px 14px;
+padding:27px 14px;
 }
 
 header h1{
@@ -83,7 +89,10 @@ font-size:15px;
 cursor:pointer;
 }
 
-button:focus-visible,input:focus-visible,select:focus-visible{
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible{
 outline:3px solid #a99bf5;
 outline-offset:2px;
 }
@@ -127,8 +136,6 @@ grid-template-columns:1fr 1fr;
 gap:10px;
 }
 
-/* Free Design Guides */
-
 .guide-card{
 background:#f5f3ff;
 border:1px solid #e3ddff;
@@ -158,26 +165,61 @@ border-radius:8px;
 font-weight:bold;
 }
 
-.guide-card a:hover{
-background:#4025a6;
-}
+.guide-card a:hover{background:#4025a6}
 
 .seo-content{
 line-height:1.8;
 }
 
-.seo-content h2{
-color:#30218c;
-}
+.seo-content h2{color:#30218c}
 
 .seo-content h3{
 font-size:18px;
-margin:20px 0 7px;
+margin:23px 0 7px;
 color:#38239c;
 }
 
-.seo-content p{
-margin:8px 0 14px;
+.seo-content p{margin:8px 0 14px}
+
+.seo-content ul,
+.seo-content ol{
+padding-left:24px;
+margin:8px 0 18px;
+}
+
+.seo-content li{margin-bottom:8px}
+
+.seo-content a{
+color:#563bd1;
+font-weight:700;
+}
+
+.feature-list{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:15px;
+}
+
+.feature-item{
+background:#f7f6ff;
+border:1px solid #e8e4ff;
+border-radius:12px;
+padding:13px;
+}
+
+.feature-item strong{
+display:block;
+color:#38239c;
+margin-bottom:4px;
+}
+
+.example-box{
+background:#f7f8fc;
+border-left:4px solid #563bd1;
+padding:13px;
+margin:12px 0;
+border-radius:7px;
 }
 
 footer{
@@ -186,7 +228,6 @@ color:white;
 text-align:center;
 padding:25px 10px;
 margin-top:25px;
-font-family:Arial,sans-serif;
 }
 
 footer a{
@@ -197,7 +238,8 @@ display:inline-block;
 }
 
 @media(max-width:520px){
-.small-grid{grid-template-columns:1fr}
+.small-grid,
+.feature-list{grid-template-columns:1fr}
 .panel{padding:15px}
 .actions{grid-template-columns:1fr 1fr}
 }
@@ -322,7 +364,7 @@ display:inline-block;
 </div>
 
 <p class="hint">
-Photo and logo are optional. Images are processed in your browser and are not uploaded to our server.
+Photo and logo are optional. Images are processed in your browser and are not uploaded to our server by this poster maker.
 </p>
 
 <div class="small-grid">
@@ -348,7 +390,7 @@ Photo and logo are optional. Images are processed in your browser and are not up
 <section class="panel">
 <h2>Poster Preview</h2>
 
-<canvas id="poster" width="1080" height="1350"></canvas>
+<canvas id="poster" width="1080" height="1350" aria-label="Poster preview"></canvas>
 
 <div class="actions">
 <button class="secondary" id="reset">Reset Design</button>
@@ -364,78 +406,265 @@ Your poster is created on your device. No account or payment required.
 <h2>About Design Dost</h2>
 
 <p>
-Create, customize and download free posters in Urdu and English for your business, pharmacy, restaurant, clothing store, academy, property, birthday, wedding and special occasions.
+Design Dost is a browser-based poster creation tool for people who want to prepare simple promotional graphics and announcements. It provides editable templates, different poster dimensions and text customization options in one place.
 </p>
 
-<p class="hint">Design Dost — Create • Customize • Download</p>
+<p>
+You can use the poster maker on a mobile phone or computer. Choose a design, add your own business information, customize the appearance and download the finished poster as a PNG image.
+</p>
+
+<div class="feature-list">
+<div class="feature-item">
+<strong>20 Design Templates</strong>
+Choose from templates for business, pharmacy, food, fashion, education, events and property.
+</div>
+
+<div class="feature-item">
+<strong>Urdu & English</strong>
+Add your own text in either language and check the preview before downloading.
+</div>
+
+<div class="feature-item">
+<strong>Four Poster Sizes</strong>
+Prepare portrait, square, story/status and landscape designs.
+</div>
+
+<div class="feature-item">
+<strong>Your Own Images</strong>
+Optionally add a product photo or business logo from your device.
+</div>
+</div>
 </section>
 
 <section class="panel" id="design-guides">
-
 <h2>📚 Free Design Guides</h2>
 
 <p>
-Learn how to create professional posters using Design Dost. Explore our free step-by-step guides.
+Explore practical guides about planning promotional graphics, selecting poster dimensions and preparing Urdu designs for mobile users.
 </p>
 
 <div class="guide-card">
 <h3>1. How to Create a Professional Business Poster Online for Free</h3>
-
 <p>
-Learn how to design attractive business posters, choose the right size, customize text and download your poster for free.
+Learn how to plan a business poster, organize its heading and offer, select a suitable size and prepare your design for sharing.
 </p>
-
-<a href="business-poster-guide.html">
-Read Business Poster Guide →
-</a>
+<a href="business-poster-guide.html">Read Business Poster Guide →</a>
 </div>
 
 <div class="guide-card">
 <h3>2. How to Create Urdu Posters on Mobile – A Complete Guide</h3>
-
 <p>
-Learn how to create beautiful Urdu posters on your mobile phone using Urdu text, colours, templates and custom images.
+Learn how to prepare Urdu poster text, choose readable colours and check your design on a mobile screen.
 </p>
-
-<a href="urdu-poster-design-guide.html">
-Read Urdu Poster Guide →
-</a>
+<a href="urdu-poster-design-guide.html">Read Urdu Poster Guide →</a>
 </div>
-
 </section>
-
-<!-- Homepage SEO Information -->
 
 <section class="panel seo-content">
 
 <h2>Free Online Poster Maker – Design Dost</h2>
 
 <p>
-Design Dost is a free online poster maker that helps you create attractive posters for your business, shop, pharmacy, social media and special occasions. Create your designs easily using your mobile phone.
+Creating a promotional poster involves more than choosing a background and adding a heading. A useful poster should explain its message quickly, display important information clearly and help the viewer understand what action to take. Design Dost provides a simple online editor where you can prepare your own promotional graphics using editable templates.
 </p>
 
-<h3>Create Posters in Urdu and English</h3>
-
 <p>
-Make posters in Urdu or English, choose from different templates, select colours and fonts, and add your own photos or business logo.
+The tool is intended for small businesses, shop owners, pharmacies, restaurants, clothing stores, academies, social media creators and individuals who need basic promotional or announcement designs. You can start with a template and customize its text, colours, images and business details.
 </p>
 
-<h3>Multiple Poster Sizes</h3>
+<h3>What Can You Create with Design Dost?</h3>
 
 <p>
-Choose portrait, square, story/status or landscape sizes according to your needs.
+Different activities need different types of posters. A shop may need to announce a seasonal sale, while a restaurant may want to highlight a new menu item. An academy may need an admissions announcement, and an event organizer may need an invitation graphic.
 </p>
 
-<h3>How to Use Design Dost</h3>
+<ul>
+<li><strong>Business and sale posters:</strong> Share discounts, product promotions, new arrivals and store announcements.</li>
+<li><strong>Pharmacy and medical posters:</strong> Prepare general health awareness messages, pharmacy announcements and service information. Medical claims should always be accurate and supported by reliable information.</li>
+<li><strong>Food and restaurant posters:</strong> Highlight menu items, meal deals, bakery products and restaurant announcements.</li>
+<li><strong>Clothing and fashion posters:</strong> Present new collections, seasonal offers and boutique promotions.</li>
+<li><strong>Education and academy posters:</strong> Share course details, admission dates, class schedules and educational announcements.</li>
+<li><strong>Events and celebrations:</strong> Prepare birthday greetings, wedding invitations, Eid greetings and event announcements.</li>
+<li><strong>Real estate posters:</strong> Display property details and contact information for property advertisements.</li>
+</ul>
+
+<h3>How to Choose the Right Poster Size</h3>
 
 <p>
-Select a template, enter your text, upload a photo or logo if needed, customize your design and download your poster as a PNG image.
+Poster dimensions affect how a design appears on different platforms. A design prepared for a vertical mobile status may not fit a square social media post in the same way. Select the dimensions according to where you intend to share the image.
 </p>
 
-<h3>Designed for Businesses and Creators</h3>
+<ul>
+<li><strong>Portrait – 1080 × 1350:</strong> A vertical layout for promotional posts and product information.</li>
+<li><strong>Square – 1080 × 1080:</strong> A balanced layout for square social media graphics.</li>
+<li><strong>Story / Status – 1080 × 1920:</strong> A tall layout for mobile stories and status updates.</li>
+<li><strong>Landscape – 1200 × 628:</strong> A horizontal layout for wide promotional graphics and link previews.</li>
+</ul>
+
+<div class="example-box">
+<strong>Practical example:</strong>
+If a shop wants to share a discount announcement on WhatsApp Status, the Story / Status size is a suitable starting point. If the same shop wants a square graphic for a social media post, it can select the Square size instead.
+</div>
+
+<h3>How to Make a Business Poster Easier to Read</h3>
 
 <p>
-Design Dost can help shop owners, small businesses, social media creators and individuals make simple promotional and announcement posters.
+A promotional poster has limited space. The viewer should be able to understand the main offer without reading a long paragraph. Organize the information in order of importance.
+</p>
+
+<ol>
+<li><strong>Start with one clear message:</strong> Decide whether the poster is announcing a sale, a new product, a service or an event.</li>
+<li><strong>Write a short heading:</strong> Use a heading that tells the viewer what the poster is about.</li>
+<li><strong>Make the offer specific:</strong> If you mention a discount, clearly state the amount and any relevant conditions.</li>
+<li><strong>Use a relevant image:</strong> Add a product photo or logo only when it helps the viewer understand the message.</li>
+<li><strong>Keep contact details readable:</strong> Check that the phone number, website or address is correct.</li>
+<li><strong>Use contrasting colours:</strong> Text should be easy to read against the background.</li>
+<li><strong>Review the final image:</strong> Check spelling, prices, alignment and contact details before downloading.</li>
+</ol>
+
+<h3>Worked Example: Planning a Shop Discount Poster</h3>
+
+<p>
+Imagine a local clothing shop wants to announce a weekend discount. Before opening the editor, the shop owner can organize the information like this:
+</p>
+
+<div class="example-box">
+<p><strong>Main heading:</strong> Weekend Sale</p>
+<p><strong>Supporting text:</strong> Selected clothing collection</p>
+<p><strong>Offer:</strong> 20% Off</p>
+<p><strong>Business name:</strong> The name of the shop</p>
+<p><strong>Contact:</strong> The shop's verified phone number</p>
+</div>
+
+<p>
+The shop owner can select a fashion or business template, choose a suitable poster size and enter these details. If a product photograph is available, it can be added to make the announcement more relevant. Before sharing the design, the owner should confirm that the discount and its conditions are correct.
+</p>
+
+<h3>Creating Urdu Posters on a Mobile Phone</h3>
+
+<p>
+Urdu posters can help communicate with audiences who prefer reading information in Urdu. A clear Urdu design should use familiar words, readable text and a simple information structure.
+</p>
+
+<ul>
+<li>Write the main message in a short and understandable sentence.</li>
+<li>Use a font option that displays Urdu characters correctly on your device.</li>
+<li>Avoid putting too many words into a small area.</li>
+<li>Keep prices and phone numbers easy to identify.</li>
+<li>Check the preview carefully for incorrect characters or spacing.</li>
+</ul>
+
+<p>
+Design Dost includes an Urdu language option. Select it, enter your Urdu text and review the preview. The appearance of Urdu characters can vary between devices and browsers, so always inspect the downloaded image before sharing it.
+</p>
+
+<h3>How to Use the Design Dost Poster Maker</h3>
+
+<ol>
+<li>Open Design Dost in your mobile or desktop browser.</li>
+<li>Choose a business category from the category list.</li>
+<li>Select one of the available design templates.</li>
+<li>Choose portrait, square, story/status or landscape dimensions.</li>
+<li>Select English or Urdu for your poster text.</li>
+<li>Enter your heading, subheading, brand name, offer and contact details.</li>
+<li>Optionally select a photo and business logo from your device.</li>
+<li>Choose a font style and background colour.</li>
+<li>Press Update Poster if you want to refresh the preview manually. Most changes also update the preview automatically.</li>
+<li>Review the finished design and select Download PNG.</li>
+</ol>
+
+<h3>Using Your Own Photos and Business Logo</h3>
+
+<p>
+A product photograph can help explain what a promotion is about. A business logo can also make an announcement easier to associate with the business. Use images that you own or have permission to use.
+</p>
+
+<p>
+In this poster maker, selected photo and logo files are processed in your browser. They are not uploaded to the Design Dost server by the poster maker. You do not need to create an account to use these image options.
+</p>
+
+<h3>Common Poster Design Mistakes to Avoid</h3>
+
+<ul>
+<li><strong>Too much text:</strong> A poster filled with long paragraphs can be difficult to read quickly.</li>
+<li><strong>Unclear offer:</strong> A discount should include enough information to avoid confusion.</li>
+<li><strong>Low-contrast colours:</strong> Similar text and background colours can make important information hard to see.</li>
+<li><strong>Unrelated images:</strong> A photograph should support the message rather than distract from it.</li>
+<li><strong>Incorrect contact information:</strong> A typing mistake in a phone number can prevent customers from reaching the business.</li>
+<li><strong>Wrong dimensions:</strong> Select a size that suits the platform where the poster will be shared.</li>
+</ul>
+
+<h3>Who Can Use This Poster Maker?</h3>
+
+<p>
+Design Dost can be used by shop owners, small businesses, pharmacy businesses, restaurants, clothing stores, teachers, academies, event organizers and individuals. It is intended for straightforward promotional and announcement graphics rather than advanced professional design work.
+</p>
+
+<p>
+The templates are starting points. The final appearance and usefulness of a poster depend on the information, images and design choices added by the person creating it.
+</p>
+
+<h3>Frequently Asked Questions</h3>
+
+<p><strong>Is Design Dost free to use?</strong></p>
+<p>
+Yes. The poster maker is available without an account or payment. You can customize a design and download it as a PNG image.
+</p>
+
+<p><strong>Can I create posters in Urdu?</strong></p>
+<p>
+Yes. Select the Urdu language option and enter your own Urdu text. Check the preview to confirm that the text appears correctly on your device.
+</p>
+
+<p><strong>Can I use Design Dost on my mobile phone?</strong></p>
+<p>
+Yes. The website is designed to work in a mobile browser as well as on a computer.
+</p>
+
+<p><strong>Can I upload my own photo and logo?</strong></p>
+<p>
+Yes. Photo and logo uploads are optional. The images are processed in your browser and are not uploaded to our server by the poster maker.
+</p>
+
+<p><strong>Which file format can I download?</strong></p>
+<p>
+The finished poster can be downloaded as a PNG image.
+</p>
+
+<p><strong>Do I need to install an application?</strong></p>
+<p>
+No. Open Design Dost in your browser and use the online poster maker.
+</p>
+
+<p><strong>Can I edit the poster after downloading it?</strong></p>
+<p>
+You can return to the poster maker, make changes and download a new PNG image. The downloaded PNG itself is not an editable project file.
+</p>
+
+<p><strong>Can I use the posters for my business?</strong></p>
+<p>
+You can create promotional designs for your business. Make sure that you have permission to use any photos, logos or other material included in your design. Check that all advertised prices and claims are accurate.
+</p>
+
+<h3>Explore More Design Resources</h3>
+
+<p>
+If you want to improve your promotional designs, explore our detailed guides:
+</p>
+
+<ul>
+<li><a href="business-poster-guide.html">Business Poster Guide</a> – practical ideas for creating business promotions.</li>
+<li><a href="urdu-poster-design-guide.html">Urdu Poster Design Guide</a> – tips for preparing Urdu posters on mobile.</li>
+</ul>
+
+<h3>Start Creating Your Poster</h3>
+
+<p>
+Choose a template, enter your own information and prepare a design for your next promotion or announcement. Review the finished poster before downloading and sharing it with your audience.
+</p>
+
+<p>
+<strong>Design Dost – A free online poster maker for Urdu and English designs.</strong>
 </p>
 
 </section>
@@ -443,7 +672,6 @@ Design Dost can help shop owners, small businesses, social media creators and in
 </main>
 
 <footer>
-
 <p>© 2026 Design Dost. All Rights Reserved.</p>
 <p>Your Free Online Design Studio</p>
 
@@ -453,7 +681,6 @@ Design Dost can help shop owners, small businesses, social media creators and in
 <a href="privacy.html">Privacy Policy</a> |
 <a href="terms.html">Terms & Conditions</a>
 </p>
-
 </footer>
 
 <script>
@@ -531,7 +758,7 @@ return lines.slice(0,maxLines);
 }
 
 function drawWrapped(text,x,y,maxWidth,lineHeight,maxLines=3){
-const lines=fitLines(text,maxWidth,maxLines);
+const lines=fitLines(text,x?maxWidth:maxWidth,maxLines);
 const firstY=y-(lines.length-1)*lineHeight/2;
 
 lines.forEach((line,i)=>{
@@ -637,16 +864,9 @@ ctx.fill();
 
 ctx.restore();
 
-const topY=size==="landscape"?H*.08:H*.09;
-
 ctx.textAlign="center";
 ctx.textBaseline="middle";
-ctx.direction="ltr";
 ctx.fillStyle="#fff";
-
-ctx.font=`bold ${Math.max(18,Math.round(30*scale))}px Arial`;
-
-ctx.fillText("DESIGN DOST PRESENTS",cx,topY);
 
 if(uploadedLogo){
 
@@ -671,7 +891,7 @@ ctx.fillStyle="#fff";
 drawWrapped(
 heading,
 cx,
-H*.235,
+H*.19,
 W*.84,
 Math.round(90*scale),
 3
@@ -682,24 +902,24 @@ ctx.font=`${Math.round(40*scale)}px "${font}", Tahoma, Arial`;
 drawWrapped(
 subtitle,
 cx,
-H*.335,
+H*.30,
 W*.84,
 Math.round(52*scale),
 3
 );
 
-let photoY=H*.405;
+let photoY=H*.385;
 let photoH=H*.31;
 let photoW=W*.72;
 
 if(size==="landscape"){
-photoY=H*.39;
+photoY=H*.37;
 photoH=H*.29;
 photoW=W*.38;
 }
 
 if(size==="story"){
-photoY=H*.39;
+photoY=H*.36;
 photoH=H*.34;
 photoW=W*.78;
 }
@@ -734,7 +954,7 @@ ctx.fill();
 
 }
 
-const offerY=H*.755;
+const offerY=H*.735;
 const offerH=H*.125;
 const offerX=W*.09;
 const offerW=W*.82;
@@ -766,16 +986,14 @@ Math.round(65*scale),
 ctx.fillStyle="#fff";
 ctx.font=`bold ${Math.round(39*scale)}px "${font}", Tahoma, Arial`;
 
-ctx.fillText(brand,cx,H*.925);
+ctx.fillText(brand,cx,H*.91);
 
 ctx.font=`${Math.round(29*scale)}px Arial`;
 ctx.direction="ltr";
 
-ctx.fillText(
-phone?"Contact: "+phone:"",
-cx,
-H*.972
-);
+if(phone){
+ctx.fillText("Contact: "+phone,cx,H*.96);
+}
 
 }
 
@@ -869,10 +1087,8 @@ cat==="all"||allowed.includes(option.value);
 option.hidden=!visible;
 
 if(group.tagName==="OPTGROUP"){
-
 group.hidden=
 Array.from(group.options).every(o=>o.hidden);
-
 }
 
 }
