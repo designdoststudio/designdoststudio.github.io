@@ -22,6 +22,7 @@
 <style>
 :root{--purple:#563bd1;--dark:#21164c;--light:#f5f3ff;--border:#e5e1f5}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{margin:0;font-family:Arial,"Noto Nastaliq Urdu",sans-serif;background:#f7f6fb;color:#211d32}
 header{background:linear-gradient(120deg,#39218f,#674ce2);color:white;padding:20px 15px;text-align:center}
 header h1{margin:0;font-size:27px}
@@ -59,10 +60,46 @@ footer{text-align:center;padding:25px 12px;background:#21164c;color:white;margin
 footer a{color:white;margin:5px}
 .notice{background:#f1edff;border-left:4px solid var(--purple);padding:12px;border-radius:6px;font-size:13px;line-height:1.6}
 .font-note{background:#f7f4ff;border-radius:8px;padding:10px;font-size:12px;color:#625d70;line-height:1.6;margin-top:10px}
+
+/* Original design examples */
+.example-intro{text-align:center;line-height:1.7;color:#625d70}
+.example-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.example-card{border:1px solid var(--border);border-radius:13px;overflow:hidden;background:#fff}
+.example-poster{min-height:260px;padding:24px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.example-poster .sample-brand{font-size:12px;font-weight:800;letter-spacing:2px;margin-bottom:25px;z-index:1}
+.example-poster h3{font-size:30px;line-height:1.15;margin:8px 0 12px;max-width:95%;z-index:1}
+.example-poster p{font-size:13px;line-height:1.6;max-width:90%;margin:5px auto;z-index:1}
+.example-poster .sample-offer{font-size:17px;font-weight:800;padding:10px 18px;margin-top:16px;border-radius:5px;z-index:1}
+.example-poster .sample-foot{font-size:11px;margin-top:20px;z-index:1}
+.pharmacy-sample{background:#e8fff5;color:#075c45}
+.pharmacy-sample:before{content:"+";position:absolute;font-size:220px;font-weight:bold;color:#13a477;opacity:.13;right:10px;top:0}
+.pharmacy-sample .sample-offer{background:#13a477;color:white}
+.food-sample{background:#421b14;color:#fff4e7}
+.food-sample:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#f2a32e;opacity:.22;right:-55px;top:-55px}
+.food-sample .sample-offer{background:#f2a32e;color:#421b14}
+.fashion-sample{background:#f6e8ee;color:#55283d}
+.fashion-sample:before{content:"";position:absolute;width:180px;height:320px;background:#c05a83;opacity:.13;right:-80px;top:-30px;transform:rotate(30deg)}
+.fashion-sample h3{font-family:Georgia,serif;font-weight:normal;letter-spacing:2px}
+.fashion-sample .sample-offer{background:#55283d;color:white}
+.education-sample{background:#e8f1ff;color:#16366b}
+.education-sample:before{content:"✦";position:absolute;font-size:200px;color:#f2a629;opacity:.16;right:12px;bottom:-60px}
+.education-sample .sample-offer{background:#f2a629;color:#16366b}
+.business-sample{background:#171717;color:white}
+.business-sample:before{content:"";position:absolute;width:180px;height:180px;background:#f5bd32;transform:rotate(45deg);right:-100px;top:-90px}
+.business-sample .sample-offer{background:#f5bd32;color:#171717}
+.example-content{padding:16px}
+.example-content h3{margin:0 0 8px;color:var(--dark)}
+.example-content p{font-size:13px;line-height:1.7;color:#5b5669;margin:7px 0}
+.example-content ul{font-size:13px;line-height:1.8;color:#5b5669;padding-left:20px}
+.example-content button{width:100%;margin-top:8px}
 @media(min-width:700px){
  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .template-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
  .container{padding:22px}
+ .example-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(min-width:950px){
+ .example-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 </style>
 </head>
@@ -75,6 +112,7 @@ footer a{color:white;margin:5px}
 
 <nav>
 <a href="#maker">Poster Maker</a>
+<a href="#examples">Design Examples</a>
 <a href="#how">How to Use</a>
 <a href="about.html">About</a>
 <a href="contact.html">Contact</a>
@@ -159,7 +197,6 @@ footer a{color:white;margin:5px}
 <div class="panel" style="background:#faf9ff;margin-top:18px">
 <h3>🔤 Font Customization</h3>
 <p class="small">Choose separate font styles for your main heading and description.</p>
-
 <div class="grid">
 <div>
 <label for="headingFont">Heading Font Style</label>
@@ -173,7 +210,6 @@ footer a{color:white;margin:5px}
 <option value="Noto Nastaliq Urdu">Noto Nastaliq Urdu</option>
 </select>
 </div>
-
 <div>
 <label for="subheadingFont">Subheading Font Style</label>
 <select id="subheadingFont">
@@ -187,9 +223,7 @@ footer a{color:white;margin:5px}
 </select>
 </div>
 </div>
-<div class="font-note">
-Tip: For Urdu posters, try Noto Nastaliq Urdu. For English posters, try Arial, Georgia or Noto Sans. Some fonts may look different if your device or browser cannot load them.
-</div>
+<div class="font-note">Tip: For Urdu posters, try Noto Nastaliq Urdu. For English posters, try Arial, Georgia or Noto Sans.</div>
 </div>
 
 <div class="grid">
@@ -231,9 +265,7 @@ Tip: For Urdu posters, try Noto Nastaliq Urdu. For English posters, try Arial, G
 </div>
 </div>
 
-<div class="notice">
-Your uploaded photos and logos are processed in your browser for poster creation. They are not uploaded to the Design Dost server.
-</div>
+<div class="notice">Your uploaded photos and logos are processed in your browser for poster creation. They are not uploaded to the Design Dost server.</div>
 
 <div class="actions">
 <button type="button" id="previewBtn">Update Poster Preview</button>
@@ -252,6 +284,131 @@ Your uploaded photos and logos are processed in your browser for poster creation
 <p class="small">For best results, open the downloaded PNG image after saving to check its final appearance.</p>
 </section>
 
+<!-- Five original design examples -->
+<section class="panel" id="examples">
+<h2>✨ Poster Design Examples</h2>
+<p class="example-intro">Explore five original sample layouts for different businesses. Each example includes its design purpose, colour choice and layout guidance. Select Use This Style to load the sample into the poster maker and customize it.</p>
+
+<div class="example-grid">
+
+<article class="example-card">
+<div class="example-poster pharmacy-sample">
+<div class="sample-brand">YOUR PHARMACY</div>
+<h3>HEALTH<br>& CARE</h3>
+<p>Your trusted neighbourhood pharmacy for everyday healthcare needs.</p>
+<div class="sample-offer">HEALTH FIRST</div>
+<div class="sample-foot">VISIT OUR STORE</div>
+</div>
+<div class="example-content">
+<h3>1. Pharmacy & Medical</h3>
+<p><strong>Purpose:</strong> Promote a pharmacy, healthcare store or medical service.</p>
+<p><strong>Colour choice:</strong> Light green and dark green create a clean healthcare-inspired appearance.</p>
+<p><strong>Text arrangement:</strong></p>
+<ul>
+<li>Business name at the top.</li>
+<li>Main healthcare heading in the centre.</li>
+<li>Short service description below.</li>
+<li>Clear call-to-action near the bottom.</li>
+</ul>
+<button type="button" class="use-example" data-example="pharmacy">Use This Style</button>
+</div>
+</article>
+
+<article class="example-card">
+<div class="example-poster food-sample">
+<div class="sample-brand">YOUR RESTAURANT</div>
+<h3>FRESH &<br>DELICIOUS</h3>
+<p>Taste made fresh every day. Discover something delicious.</p>
+<div class="sample-offer">TODAY'S SPECIAL</div>
+<div class="sample-foot">MADE WITH CARE</div>
+</div>
+<div class="example-content">
+<h3>2. Food & Restaurant</h3>
+<p><strong>Purpose:</strong> Promote restaurant dishes, takeaway food and daily specials.</p>
+<p><strong>Colour choice:</strong> Deep brown with warm orange gives the design a bold food-promotion look.</p>
+<p><strong>Text arrangement:</strong></p>
+<ul>
+<li>Restaurant name at the top.</li>
+<li>Short, memorable food heading.</li>
+<li>One-line description.</li>
+<li>Special item or offer highlighted.</li>
+</ul>
+<button type="button" class="use-example" data-example="food">Use This Style</button>
+</div>
+</article>
+
+<article class="example-card">
+<div class="example-poster fashion-sample">
+<div class="sample-brand">YOUR FASHION STORE</div>
+<h3>NEW<br>SEASON</h3>
+<p>Refresh your style with our latest collection.</p>
+<div class="sample-offer">UP TO 30% OFF</div>
+<div class="sample-foot">STYLE YOUR WAY</div>
+</div>
+<div class="example-content">
+<h3>3. Clothing & Fashion</h3>
+<p><strong>Purpose:</strong> Showcase new arrivals, seasonal collections and clothing discounts.</p>
+<p><strong>Colour choice:</strong> Soft pink and deep berry create an elegant fashion-focused appearance.</p>
+<p><strong>Text arrangement:</strong></p>
+<ul>
+<li>Store name at the top.</li>
+<li>Large, stylish collection heading.</li>
+<li>Brief collection description.</li>
+<li>Discount or promotion at the bottom.</li>
+</ul>
+<button type="button" class="use-example" data-example="fashion">Use This Style</button>
+</div>
+</article>
+
+<article class="example-card">
+<div class="example-poster education-sample">
+<div class="sample-brand">YOUR ACADEMY</div>
+<h3>ADMISSIONS<br>OPEN</h3>
+<p>Build skills for a brighter future. Join our learning community.</p>
+<div class="sample-offer">ENROLL TODAY</div>
+<div class="sample-foot">LEARN • GROW • ACHIEVE</div>
+</div>
+<div class="example-content">
+<h3>4. Education & Academy</h3>
+<p><strong>Purpose:</strong> Announce admissions, courses, classes and educational services.</p>
+<p><strong>Colour choice:</strong> Blue suggests a professional academic style, with orange for emphasis.</p>
+<p><strong>Text arrangement:</strong></p>
+<ul>
+<li>Academy name at the top.</li>
+<li>Admissions or course heading.</li>
+<li>Short educational message.</li>
+<li>Enrollment call-to-action.</li>
+</ul>
+<button type="button" class="use-example" data-example="education">Use This Style</button>
+</div>
+</article>
+
+<article class="example-card">
+<div class="example-poster business-sample">
+<div class="sample-brand">YOUR BUSINESS</div>
+<h3>SPECIAL<br>SALE</h3>
+<p>Explore great deals on selected products. Limited-time promotion.</p>
+<div class="sample-offer">20% OFF</div>
+<div class="sample-foot">SHOP TODAY</div>
+</div>
+<div class="example-content">
+<h3>5. Business & Sale</h3>
+<p><strong>Purpose:</strong> Advertise shop promotions, product discounts and special offers.</p>
+<p><strong>Colour choice:</strong> Black and golden yellow create strong contrast and draw attention to the offer.</p>
+<p><strong>Text arrangement:</strong></p>
+<ul>
+<li>Business name at the top.</li>
+<li>Large sale heading in the centre.</li>
+<li>Short offer description.</li>
+<li>Discount displayed prominently.</li>
+</ul>
+<button type="button" class="use-example" data-example="business">Use This Style</button>
+</div>
+</article>
+
+</div>
+</section>
+
 <section class="panel" id="how">
 <h2>How to Use Design Dost</h2>
 <ol class="article">
@@ -262,6 +419,7 @@ Your uploaded photos and logos are processed in your browser for poster creation
 <li>Choose separate font styles for your heading and subheading.</li>
 <li>Choose your preferred colours and optionally upload a photo or logo.</li>
 <li>Tap Update Poster Preview and then Download PNG Poster.</li>
+<li>You can also select a sample design above and customize it in the poster maker.</li>
 </ol>
 </section>
 
@@ -346,15 +504,18 @@ elegant:{name:"Elegant Design",cat:"fashion",style:"elegant",bg:"#eee8e1",fg:"#3
 creative:{name:"Creative Layout",cat:"business",style:"creative",bg:"#142e42",fg:"#ffffff",accent:"#36d6c0"}
 };
 
-let photoImage = null;
-let logoImage = null;
+let photoImage=null;
+let logoImage=null;
 
-function currentTemplate(){return templates[$("template").value] || templates.sale;}
+function currentTemplate(){
+ return templates[$("template").value]||templates.sale;
+}
 
+/* Font family fix */
 function fontFamily(id){
  const value=$(id).value;
  const allowed=["Arial","Georgia","Trebuchet MS","Impact","Noto Sans","Noto Serif","Noto Nastaliq Urdu"];
- return allowed.includes(value) ? `"${value}"` : "Arial";
+ return allowed.includes(value)?value:"Arial";
 }
 
 function fontReady(){
@@ -390,18 +551,21 @@ function filterTemplates(){
  const cat=$("category").value;
  const select=$("template");
  let first=null;
+
  [...select.options].forEach(opt=>{
   const t=templates[opt.value];
-  const show=cat==="all" || (t && t.cat===cat);
+  const show=cat==="all"||(t&&t.cat===cat);
   opt.hidden=!show;
-  if(show && !first)first=opt.value;
+  if(show&&!first)first=opt.value;
  });
- if(templates[select.value] && cat!=="all" && templates[select.value].cat!==cat){
-  select.value=first || "sale";
+
+ if(templates[select.value]&&cat!=="all"&&templates[select.value].cat!==cat){
+  select.value=first||"sale";
   const t=currentTemplate();
   $("bgColor").value=t.bg;
   $("textColor").value=t.fg;
  }
+
  setTemplateButtons();
  drawPoster();
 }
@@ -442,7 +606,8 @@ function setCanvasSize(){
   landscape:[1200,628]
  };
  const s=sizes[$("size").value]||sizes.portrait;
- canvas.width=s[0];canvas.height=s[1];
+ canvas.width=s[0];
+ canvas.height=s[1];
 }
 
 function rounded(x,y,w,h,r,color){
@@ -473,8 +638,9 @@ function wrapText(text,x,y,maxWidth,lineHeight,maxLines,fontSize,color,align="ce
 
  for(const word of words){
   const test=line?line+" "+word:word;
-  if(ctx.measureText(test).width>maxWidth && line){
-   lines.push(line);line=word;
+  if(ctx.measureText(test).width>maxWidth&&line){
+   lines.push(line);
+   line=word;
   }else line=test;
  }
  if(line)lines.push(line);
@@ -482,7 +648,9 @@ function wrapText(text,x,y,maxWidth,lineHeight,maxLines,fontSize,color,align="ce
  if(lines.length>maxLines){
   lines=lines.slice(0,maxLines);
   let last=lines[maxLines-1];
-  while(last.length>2 && ctx.measureText(last+"…").width>maxWidth)last=last.slice(0,-1);
+  while(last.length>2&&ctx.measureText(last+"…").width>maxWidth){
+   last=last.slice(0,-1);
+  }
   lines[maxLines-1]=last+"…";
  }
 
@@ -503,7 +671,9 @@ function drawImageCover(img,x,y,w,h){
  const sw=w/scale,sh=h/scale;
  const sx=(img.width-sw)/2,sy=(img.height-sh)/2;
  ctx.save();
- ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();
+ ctx.beginPath();
+ ctx.rect(x,y,w,h);
+ ctx.clip();
  ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
  ctx.restore();
 }
@@ -529,68 +699,92 @@ function drawPoster(){
  const subheadingFamily=fontFamily("subheadingFont");
 
  ctx.clearRect(0,0,w,h);
- ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+ ctx.fillStyle=bg;
+ ctx.fillRect(0,0,w,h);
 
  switch(t.style){
  case "sale":
-  ctx.fillStyle=accent;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(w*.35,0);ctx.lineTo(0,h*.28);ctx.fill();
-  ctx.fillStyle=accent;ctx.fillRect(0,h*.78,w,h*.22);break;
+  ctx.fillStyle=accent;
+  ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(w*.35,0);ctx.lineTo(0,h*.28);ctx.fill();
+  ctx.fillRect(0,h*.78,w,h*.22);
+  break;
  case "bold":
   ctx.fillStyle=accent;ctx.fillRect(0,0,w*.055,h);
-  ctx.fillStyle="#333";ctx.fillRect(w*.72,0,w*.28,h);break;
+  ctx.fillStyle="#333";ctx.fillRect(w*.72,0,w*.28,h);
+  break;
  case "minimal":
-  ctx.strokeStyle=accent;ctx.lineWidth=12;ctx.strokeRect(35,35,w-70,h-70);break;
+  ctx.strokeStyle=accent;ctx.lineWidth=12;ctx.strokeRect(35,35,w-70,h-70);
+  break;
  case "medical":
   ctx.fillStyle=accent;ctx.fillRect(0,0,w,h*.12);
-  ctx.fillStyle="#c8f1df";ctx.fillRect(0,h*.82,w,h*.18);break;
+  ctx.fillStyle="#c8f1df";ctx.fillRect(0,h*.82,w,h*.18);
+  break;
  case "medical2":
   ctx.fillStyle=accent;ctx.fillRect(0,0,w*.12,h);
-  ctx.fillStyle="#d3eaff";ctx.fillRect(0,h*.82,w,h*.18);break;
+  ctx.fillStyle="#d3eaff";ctx.fillRect(0,h*.82,w,h*.18);
+  break;
  case "food":
   ctx.fillStyle=accent;ctx.beginPath();ctx.arc(w*.85,h*.12,small*.2,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle="#25110d";ctx.fillRect(0,h*.8,w,h*.2);break;
+  ctx.fillStyle="#25110d";ctx.fillRect(0,h*.8,w,h*.2);
+  break;
  case "menu":
   ctx.strokeStyle=accent;ctx.lineWidth=10;ctx.strokeRect(35,35,w-70,h-70);
-  ctx.fillStyle=accent;ctx.fillRect(0,0,w,h*.13);break;
+  ctx.fillStyle=accent;ctx.fillRect(0,0,w,h*.13);
+  break;
  case "fashion":
   ctx.fillStyle=accent;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(w*.3,0);ctx.lineTo(0,h*.35);ctx.fill();
-  ctx.fillStyle="#fff";ctx.globalAlpha=.35;ctx.fillRect(w*.72,0,w*.28,h);ctx.globalAlpha=1;break;
+  ctx.fillStyle="#fff";ctx.globalAlpha=.35;ctx.fillRect(w*.72,0,w*.28,h);ctx.globalAlpha=1;
+  break;
  case "luxury":
   ctx.strokeStyle=accent;ctx.lineWidth=5;ctx.strokeRect(45,45,w-90,h-90);
-  ctx.strokeRect(65,65,w-130,h-130);break;
+  ctx.strokeRect(65,65,w-130,h-130);
+  break;
  case "education":
   ctx.fillStyle=accent;ctx.fillRect(0,0,w,h*.14);
-  ctx.fillStyle="#d7e6ff";ctx.beginPath();ctx.arc(w*.85,h*.83,small*.25,0,Math.PI*2);ctx.fill();break;
+  ctx.fillStyle="#d7e6ff";ctx.beginPath();ctx.arc(w*.85,h*.83,small*.25,0,Math.PI*2);ctx.fill();
+  break;
  case "modern":
   ctx.fillStyle=accent;ctx.beginPath();ctx.moveTo(w*.62,0);ctx.lineTo(w,0);ctx.lineTo(w,h*.4);ctx.closePath();ctx.fill();
-  ctx.fillStyle="#fff";ctx.globalAlpha=.2;ctx.fillRect(0,h*.76,w,h*.24);ctx.globalAlpha=1;break;
+  ctx.fillStyle="#fff";ctx.globalAlpha=.2;ctx.fillRect(0,h*.76,w,h*.24);ctx.globalAlpha=1;
+  break;
  case "eid":
   ctx.strokeStyle=accent;ctx.lineWidth=8;ctx.strokeRect(30,30,w-60,h-60);
-  ctx.fillStyle=accent;ctx.beginPath();ctx.arc(w*.5,h*.12,small*.09,0,Math.PI*2);ctx.fill();break;
+  ctx.fillStyle=accent;ctx.beginPath();ctx.arc(w*.5,h*.12,small*.09,0,Math.PI*2);ctx.fill();
+  break;
  case "event":
   for(let i=0;i<10;i++){
    ctx.fillStyle=accent;ctx.globalAlpha=.35;
    ctx.beginPath();ctx.arc((i*137)%w,(i*211)%h,small*.025,0,Math.PI*2);ctx.fill();
-  }ctx.globalAlpha=1;break;
+  }
+  ctx.globalAlpha=1;
+  break;
  case "realestate":
   ctx.fillStyle=accent;ctx.fillRect(0,h*.78,w,h*.22);
-  ctx.fillStyle="#d5d0c5";ctx.beginPath();ctx.moveTo(w*.1,h*.4);ctx.lineTo(w*.5,h*.15);ctx.lineTo(w*.9,h*.4);ctx.closePath();ctx.fill();break;
+  ctx.fillStyle="#d5d0c5";ctx.beginPath();ctx.moveTo(w*.1,h*.4);ctx.lineTo(w*.5,h*.15);ctx.lineTo(w*.9,h*.4);ctx.closePath();ctx.fill();
+  break;
  case "corporate":
   ctx.fillStyle=accent;ctx.fillRect(0,0,w,h*.16);
-  ctx.fillStyle="#d3dce8";ctx.fillRect(w*.75,h*.16,w*.25,h*.84);break;
+  ctx.fillStyle="#d3dce8";ctx.fillRect(w*.75,h*.16,w*.25,h*.84);
+  break;
  case "gradient":
-  const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,bg);g.addColorStop(1,accent);
-  ctx.fillStyle=g;ctx.fillRect(0,0,w,h);break;
+  const g=ctx.createLinearGradient(0,0,w,h);
+  g.addColorStop(0,bg);g.addColorStop(1,accent);
+  ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+  break;
  case "classic":
   ctx.strokeStyle=accent;ctx.lineWidth=12;ctx.strokeRect(28,28,w-56,h-56);
-  ctx.strokeRect(48,48,w-96,h-96);break;
+  ctx.strokeRect(48,48,w-96,h-96);
+  break;
  case "discount":
-  ctx.fillStyle=accent;ctx.beginPath();ctx.arc(w*.5,h*.55,small*.36,0,Math.PI*2);ctx.fill();break;
+  ctx.fillStyle=accent;ctx.beginPath();ctx.arc(w*.5,h*.55,small*.36,0,Math.PI*2);ctx.fill();
+  break;
  case "elegant":
-  ctx.fillStyle=accent;ctx.globalAlpha=.22;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(w*.45,0);ctx.lineTo(0,h*.45);ctx.fill();ctx.globalAlpha=1;break;
+  ctx.fillStyle=accent;ctx.globalAlpha=.22;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(w*.45,0);ctx.lineTo(0,h*.45);ctx.fill();ctx.globalAlpha=1;
+  break;
  case "creative":
   ctx.fillStyle=accent;ctx.beginPath();ctx.arc(w*.92,h*.12,small*.22,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle="#234b5b";ctx.fillRect(0,h*.82,w,h*.18);break;
+  ctx.fillStyle="#234b5b";ctx.fillRect(0,h*.82,w,h*.18);
+  break;
  }
 
  const landscape=$("size").value==="landscape";
@@ -599,7 +793,9 @@ function drawPoster(){
  const textStart=landscape?h*.68:h*.61;
 
  // Brand
- ctx.direction="ltr";ctx.textAlign="center";ctx.textBaseline="middle";
+ ctx.direction="ltr";
+ ctx.textAlign="center";
+ ctx.textBaseline="middle";
  ctx.fillStyle=fg;
  ctx.font=`bold ${Math.round(small*.038)}px Arial`;
  ctx.fillText(brand.toUpperCase(),center,h*.075,w*.82);
@@ -614,46 +810,26 @@ function drawPoster(){
   ctx.globalAlpha=1;
  }
 
- // Main Heading - selected font
+ // Main heading
  const headingY=landscape?h*.25:(photoImage?h*.2:h*.29);
  const headingMax=landscape?w*.52:w*.84;
  const headingSize=fitText(heading,headingMax,Math.round(small*.09),28,headingFamily);
 
- ctx.font=`bold ${headingSize}px ${headingFamily}`;
+ ctx.font=`bold ${headingSize}px "${headingFamily}"`;
  ctx.fillStyle=fg;
  ctx.textAlign="center";
  ctx.direction=isUr?"rtl":"ltr";
 
- wrapText(
-  heading,
-  landscape?w*.3:center,
-  headingY,
-  headingMax,
-  headingSize*1.2,
-  3,
-  headingSize,
-  fg,
-  "center",
-  headingFamily
- );
+ wrapText(heading,landscape?w*.3:center,headingY,headingMax,headingSize*1.2,3,headingSize,fg,"center",headingFamily);
 
- // Subheading - separate selected font
+ // Description
  const descY=landscape?h*.48:textStart;
  const descWidth=landscape?w*.5:w*.8;
  const descSize=Math.round(small*.038);
 
- wrapText(
-  sub,
-  landscape?w*.3:center,
-  descY,
-  descWidth,
+ wrapText(sub,landscape?w*.3:center,descY,descWidth,
   Math.round(descSize*(subheadingFamily.includes("Nastaliq")?1.9:1.4)),
-  4,
-  descSize,
-  fg,
-  "center",
-  subheadingFamily
- );
+  4,descSize,fg,"center",subheadingFamily);
 
  // Offer block
  const offerY=landscape?h*.73:h*.78;
@@ -661,21 +837,93 @@ function drawPoster(){
  const offerH=landscape?h*.16:h*.12;
  rounded(landscape?w*.06:center-offerW/2,offerY-offerH/2,offerW,offerH,25,accent);
 
- ctx.fillStyle=t.style==="minimal"||t.style==="menu"||t.style==="classic"||t.style==="elegant"?"#ffffff":(fg==="#ffffff"?"#21164c":"#ffffff");
+ ctx.fillStyle=["minimal","menu","classic","elegant"].includes(t.style)?"#ffffff":(fg==="#ffffff"?"#21164c":"#ffffff");
  ctx.font=`bold ${fitText(offer,offerW*.88,Math.round(small*.07),24)}px Arial`;
  ctx.textAlign="center";
  ctx.direction=isUr?"rtl":"ltr";
  ctx.fillText(offer,landscape?w*.3:center,offerY,offerW*.88);
 
  // Contact footer
- ctx.fillStyle=fg;ctx.textAlign="center";ctx.direction="ltr";
+ ctx.fillStyle=fg;
+ ctx.textAlign="center";
+ ctx.direction="ltr";
  ctx.font=`bold ${Math.round(small*.032)}px Arial`;
- if(phone)ctx.fillText(phone,landscape?w*.3:center,h*.94,w*.8);
- else ctx.fillText("CONTACT US",landscape?w*.3:center,h*.94,w*.8);
+ ctx.fillText(phone||"CONTACT US",landscape?w*.3:center,h*.94,w*.8);
 
  // Logo
  if(logoImage)drawImageContain(logoImage,w*.04,h*.025,w*.13,w*.13);
 }
+
+/* Load a ready-made example into the poster maker */
+const examples={
+ pharmacy:{
+  category:"pharmacy",template:"pharmacy",
+  heading:"HEALTH & CARE",
+  subheading:"Your trusted neighbourhood pharmacy for everyday healthcare needs.",
+  brand:"YOUR PHARMACY",offer:"HEALTH FIRST",
+  bg:"#e8fff5",fg:"#075c45"
+ },
+ food:{
+  category:"food",template:"food",
+  heading:"FRESH & DELICIOUS",
+  subheading:"Taste made fresh every day. Discover something delicious.",
+  brand:"YOUR RESTAURANT",offer:"TODAY'S SPECIAL",
+  bg:"#421b14",fg:"#fff4e7"
+ },
+ fashion:{
+  category:"fashion",template:"fashion",
+  heading:"NEW SEASON",
+  subheading:"Refresh your style with our latest collection.",
+  brand:"YOUR FASHION STORE",offer:"UP TO 30% OFF",
+  bg:"#f6e8ee",fg:"#55283d"
+ },
+ education:{
+  category:"education",template:"education",
+  heading:"ADMISSIONS OPEN",
+  subheading:"Build skills for a brighter future. Join our learning community.",
+  brand:"YOUR ACADEMY",offer:"ENROLL TODAY",
+  bg:"#e8f1ff",fg:"#16366b"
+ },
+ business:{
+  category:"business",template:"sale",
+  heading:"SPECIAL SALE",
+  subheading:"Explore great deals on selected products. Limited-time promotion.",
+  brand:"YOUR BUSINESS",offer:"20% OFF",
+  bg:"#563bd1",fg:"#ffffff"
+ }
+};
+
+document.querySelectorAll(".use-example").forEach(button=>{
+ button.addEventListener("click",()=>{
+  const data=examples[button.dataset.example];
+  if(!data)return;
+
+  $("category").value=data.category;
+  $("template").value=data.template;
+  $("heading").value=data.heading;
+  $("subheading").value=data.subheading;
+  $("brand").value=data.brand;
+  $("offer").value=data.offer;
+  $("phone").value="";
+  $("bgColor").value=data.bg;
+  $("textColor").value=data.fg;
+  $("language").value="en";
+  $("size").value="portrait";
+  $("headingFont").value="Arial";
+  $("subheadingFont").value="Noto Sans";
+
+  $("photo").value="";
+  $("logo").value="";
+  photoImage=null;
+  logoImage=null;
+
+  filterTemplates();
+  setTemplateButtons();
+  drawPoster();
+
+  $("maker").scrollIntoView({behavior:"smooth",block:"start"});
+ });
+});
 
 // Text and design controls
 [
@@ -718,33 +966,35 @@ $("resetBtn").addEventListener("click",()=>{
  $("logo").value="";
  photoImage=null;
  logoImage=null;
- setTemplateButtons();
  filterTemplates();
+ setTemplateButtons();
  drawPoster();
 });
 
 // PNG Download
-$("downloadBtn").addEventListener("click",()=>{
+$("downloadBtn").addEventListener("click",async()=>{
  try{
-  fontReady().then(()=>{
-   drawPoster();
-   canvas.toBlob(blob=>{
-    if(!blob){
-     alert("Poster could not be created. Please try again.");
-     return;
-    }
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement("a");
-    a.href=url;
-    a.download="design-dost-poster.png";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),2000);
-   },"image/png");
-  });
+  await fontReady();
+  drawPoster();
+
+  canvas.toBlob(blob=>{
+   if(!blob){
+    alert("Poster could not be created. Please try again.");
+    return;
+   }
+
+   const url=URL.createObjectURL(blob);
+   const a=document.createElement("a");
+   a.href=url;
+   a.download="design-dost-poster.png";
+   document.body.appendChild(a);
+   a.click();
+   a.remove();
+   setTimeout(()=>URL.revokeObjectURL(url),2000);
+  },"image/png");
+
  }catch(e){
-  alert("Download failed. Please try another browser or a smaller image.");
+  alert("Download failed. Please try again.");
  }
 });
 
@@ -752,7 +1002,8 @@ $("downloadBtn").addEventListener("click",()=>{
 if(!CanvasRenderingContext2D.prototype.roundRect){
  CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){
   this.beginPath();
-  this.moveTo(x+r,y);this.lineTo(x+w-r,y);
+  this.moveTo(x+r,y);
+  this.lineTo(x+w-r,y);
   this.quadraticCurveTo(x+w,y,x+w,y+r);
   this.lineTo(x+w,y+h-r);
   this.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
